@@ -104,16 +104,61 @@ class ChessBoard {
     private ChessBoard() {
         board = new Piece[8][8];
     }
-    // method for moving a piece over the board
+
+    // Method to check if square is not off board
+    private boolean isValidBoardPosition(int x, int y) {
+        return x >= 0 && x < 8 && y >= 0 && y < 8;
+    }
+
+    // Method to check if path is blocked
+    private boolean isPathBlocked(int x1, int y1, int x2, int y2) {
+        int dx = Integer.compare(x2, x1);
+        int dy = Integer.compare(y2, y1);
+        int x = x1 + dx;
+        int y = y1 + dy;
+
+        while (x != x2 || y != y2) {
+            if (board[x][y] != null) {
+                return true; // Found a piece blocking the path
+            }
+            x += dx;
+            y += dy;
+        }
+        return false;
+    }
+
+    // Method for moving a piece over the board
     public boolean movePiece(int x1, int y1, int x2, int y2) {
-        // return false if move is invalid
+        // Prevent moving off the board
+        if (!isValidBoardPosition(x1, y1) || !isValidBoardPosition(x2, y2)) {
+            return false;
+        }
+        // Prevent invalid move
         if (board[x1][y1] == null || !board[x1][y1].isValidMove(x1, y1, x2, y2)) {
             return false;
         }
-        // copy piece from point a to point b
+        // Prevent moving onto an allied piece
+        if (board[x2][y2] != null && board[x2][y2].color.equals(board[x1][y1].color)) {
+            return false;
+        }
+        // Prevent moving through other pieces (except for Pawn, Knight, King)
+        if (!(board[x1][y1] instanceof Pawn || board[x1][y1] instanceof Knight || board[x1][y1] instanceof King)) {
+            if (isPathBlocked(x1, y1, x2, y2)) {
+                return false;
+            }
+        }
+
+        // Store the target piece temporarily
+        Piece temp = board[x2][y2];
         board[x2][y2] = board[x1][y1];
-        // remove piece from point a
         board[x1][y1] = null;
+
+        // Revert move if it puts the king in check
+        if (isKingInCheck(board[x2][y2].color)) {
+            board[x1][y1] = board[x2][y2];
+            board[x2][y2] = temp;
+            return false;
+        }
         return true;
     }
 
@@ -149,6 +194,8 @@ class ChessBoard {
             System.out.println("  +------+------+------+------+------+------+------+------+");
         }
         System.out.println("     a      b      c      d      e      f      g      h ");
+        System.out.println();
+        System.out.println();
     }
 
     // method for checking if a players king is in check
@@ -327,10 +374,10 @@ public class ConsoleChess {
 
         game.printBoard();
         game.makeMove(1, 1, 1, 2);
-        game.printBoard();
+        game.makeMove(1, 2, 1, 3);
+        game.makeMove(1, 3, 1, 4);
+        game.makeMove(1, 4, 1, 5);
 
-        game.makeMove(0, 0, 0, 5);
         game.printBoard();
-        game.makeMove(0, 1, 2, 2);
     }
 }
