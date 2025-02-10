@@ -164,36 +164,37 @@ class ChessBoard {
 
     // Method for printing the chessboard to console
     public void printBoard() {
-        System.out.println("     a      b      c      d      e      f      g      h ");
-        System.out.println("  +------+------+------+------+------+------+------+------+");
+        System.out.println("      A       B       C       D       E       F       G       H ");
+        System.out.println("  ╔═══╩═══════╩═══════╩═══════╩═══════╩═══════╩═══════╩═══════╩════╗");
         for (int y = 7; y >= 0; y--) {
 
-            System.out.print("  |");
+            System.out.print("  ║");
             for (int x = 0; x < 8; x++) {
-                System.out.print(((x + y) % 2 == 0 ? "      " : "░░░░░░") + "|");
+                System.out.print(((x + y) % 2 == 0 ? "        " : "████████"));
             }
+            System.out.print("║");
             System.out.println();
 
-            System.out.print((y + 1) + " |");
+            System.out.print((y + 1) + "╞╣");
             for (int x = 0; x < 8; x++) {
                 if((x + y) % 2 == 0){
-                    System.out.print((board[x][y] == null ? "      " : "  " + board[x][y].shortName() + "  ") + "|");
+                    System.out.print((board[x][y] == null ? "        " : "  |" + board[x][y].shortName() + "|  "));
                 }
                 else{
-                    System.out.print((board[x][y] == null ? "░░░░░░" : "░░" + board[x][y].shortName() + "░░") + "|");
+                    System.out.print((board[x][y] == null ? "████████" : "██|" + board[x][y].shortName() + "|██"));
                 }
             }
-            System.out.println(" " + (y + 1));
+            System.out.println("╠╡" + (y + 1));
 
-            System.out.print("  |");
+            System.out.print("  ║");
             for (int x = 0; x < 8; x++) {
-                System.out.print(((x + y) % 2 == 0 ? "      " : "░░░░░░") + "|");
+                System.out.print(((x + y) % 2 == 0 ? "        " : "████████"));
             }
+            System.out.print("║");
             System.out.println();
-
-            System.out.println("  +------+------+------+------+------+------+------+------+");
         }
-        System.out.println("     a      b      c      d      e      f      g      h ");
+        System.out.println("  ╚═══╦═══════╦═══════╦═══════╦═══════╦═══════╦═══════╦═══════╦════╝");
+        System.out.println("      A       B       C       D       E       F       G       H ");
         System.out.println();
         System.out.println();
     }
