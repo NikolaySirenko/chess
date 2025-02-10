@@ -16,7 +16,7 @@ This project implements a console-based chess game that demonstrates several des
 
 ### Builder Pattern
 
-**Where**: `ChessBoard.Builder` class
+**Where**: `ChessBoardBuilder` class
 
 **Why**:
 
