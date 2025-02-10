@@ -11,12 +11,12 @@ This project implements a console-based chess game that demonstrates several des
 **Why**:
 
 - Encapsulates piece creation logic
-- Provides a single point of control for creating different chess pieces
+- Provides a single point of control for creating different chess chess.pieces
 - Makes adding new piece types easier without modifying existing code
 
 ### Builder Pattern
 
-**Where**: `ChessBoard.Builder` class
+**Where**: `ChessBoardBuilder` class
 
 **Why**:
 
@@ -43,8 +43,8 @@ This project implements a console-based chess game that demonstrates several des
 
 **Why**:
 
-- Groups pieces into teams (White/Black)
-- Allows treating individual pieces and groups of pieces uniformly
+- Groups chess.pieces into teams (White/Black)
+- Allows treating individual chess.pieces and groups of chess.pieces uniformly
 - Simplifies team-based operations and checks
 
 ## Behavioral Patterns
