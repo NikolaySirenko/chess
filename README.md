@@ -2,6 +2,9 @@
 
 This project implements a console-based chess game that demonstrates several design patterns. Here's how and why each pattern is used:
 
+![bLLDRoCt3BthLmZkeVOsDfhzw66m27OJeCLYFvecHIz13hA6jGNFI0E9aoPDyz-haSIHhGmsyCb3Fb9yf1xb3mw5nRvjcDiftGahMYuRuTn7HAlMFS8dQVIr-XVuptiX3XyQuCw7o93CEY5tOWDy9hVWt8m_CXxFuHU3upVHGl1nlkHh8snTHU1y-4v-xAsk-3LQfJV9PTOEx1rOL_4l-1](https://github.com/user-attachments/assets/396d03c0-6d54-4c44-b4ef-9cd4f3179fe0)
+
+
 ## Creational Patterns
 
 ### Factory Method Pattern
